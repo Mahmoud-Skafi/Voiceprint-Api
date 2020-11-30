@@ -1,14 +1,23 @@
-const model = require('../models/picture-model');
-const router = require('express').Router();
 
-router.post('/img/add', (req, res) => {
-    model.insertMany([{
-        url: req.body.url,
-        tags: req.body.tags
-    }], function (err) {
-        if (err) res.status(501).send();;
-        res.status(201).send();
-    });
+const router = require('express').Router();
+const house = require('../models/house');
+const House = require('../models/house');
+
+router.get('/control',async (req,res) =>{
+    await House.findOne({}).then(doc =>{
+        res.send(doc);
+    })
 });
 
+router.post('/control',async (req,res) =>{
+    
+    try{
+        await House.findOneAndUpdate({},req.body,{
+            new: true
+          });
+        res.status(201).send();
+    }catch{
+
+    }
+});
 module.exports = router;

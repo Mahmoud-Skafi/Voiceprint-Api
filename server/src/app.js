@@ -12,16 +12,16 @@ app.use(bodyParser.urlencoded({ extended: true })); // for admin website
 app.use(bodyParser.json()); // API Request
 app.use(express.static(__dirname + './public'));
 
-//Database Connecting ./..
-// const url = `mongodb://localhost:27017/dummyData`;
-// console.log('Connecting to database...');
-// mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log('Connected to database successfully.');
-//     })
-//     .catch((err) => {
-//         console.log('Unable to connect to the mongodb instance. Error: ', err);
-//     });
+
+const url = `mongodb://localhost:27017/voiceprint`;
+console.log('Connecting to database...');
+mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to database successfully.');
+    })
+    .catch((err) => {
+        console.log('Unable to connect to the mongodb instance. Error: ', err);
+    });
 
 
 //API's
