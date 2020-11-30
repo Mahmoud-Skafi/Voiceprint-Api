@@ -2,7 +2,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     routeHandler = require('./routers/router'),
     mongoose = require('mongoose');
-
+const { MongoClient } = require('mongodb');
 require('dotenv').config({ path: '../../.env' });
 
 const app = express();
@@ -13,7 +13,8 @@ app.use(bodyParser.json()); // API Request
 app.use(express.static(__dirname + './public'));
 
 
-const url = `mongodb://localhost:27017/voiceprint`;
+const url = `mongodb://root:irPuy7yhwQg2pAdm@cluster0-shard-00-00.61azx.mongodb.net:27017,cluster0-shard-00-01.61azx.mongodb.net:27017,cluster0-shard-00-02.61azx.mongodb.net:27017/voiceprint?ssl=true&replicaSet=atlas-qbuzaj-shard-0&authSource=admin&retryWrites=true&w=majority`;
+
 console.log('Connecting to database...');
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
     .then(() => {
