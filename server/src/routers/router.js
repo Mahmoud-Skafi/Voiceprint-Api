@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
         /house/:id/t/[number] post requst change door status[1,2,3...etc] 
         /house/:id/v get requst return voiceprints 
         /house/:id/v post requst add new voiceprint 
-
         `
     })
 });
