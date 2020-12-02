@@ -1,5 +1,6 @@
 const router = require('express').Router(),
     admin = require('./admin-router');
+house = require('./house-router');
 
 //just for testing
 router.get('/', (req, res) => {
@@ -9,6 +10,6 @@ router.get('/', (req, res) => {
 });
 //Router's
 
-router.use('/admin', admin);
-
+// router.use('/admin', admin);
+router.use('/house', house);
 module.exports = router;
