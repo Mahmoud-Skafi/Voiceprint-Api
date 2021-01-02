@@ -85,13 +85,14 @@ router.post('/:id/t/:set', async (req, res, next) => {
 router.post('/:id/v', async (req, res, next) => {
     try {
         const { id } = req.params;
-        const value = req.body;
+        const value = req.body.voiceprints;
         console.log(value);
         const item = await House.findOne({
             "_id": id
         })
         if (!item) return next();
-        const update = await House.insertMany({ "voiceprints": value.voiceprints });
+        item.voiceprints.push(value);
+        const update = await House.updateOne({ "_id": id }, { "voiceprints": item.voiceprints });
         res.json(update);
     } catch (error) {
         next(error);
