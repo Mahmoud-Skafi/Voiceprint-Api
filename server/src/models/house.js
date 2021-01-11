@@ -9,6 +9,7 @@ const houseschema = new Schema({
   door: { type: Boolean, required: true },
   temp: { type: Number, required: true },
   voiceprints: { type: Array, required: true },
+  history: { type: Array, required: true },
 });
 
 module.exports = mongoose.model('houses', houseschema);
