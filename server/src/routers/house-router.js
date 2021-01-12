@@ -30,7 +30,7 @@ router.get('/:id/d', async (req, res, next) => {
             "_id": id
         });
         if (!item) return next();
-        res.json(item.door);
+        res.json({"door": item.door});
     } catch (error) {
         next(error);
     }
