@@ -23,6 +23,18 @@ router.get('/', async (req, res, next) => {
         next(error);
     }
 });
+router.get('/:id/d', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const item = await House.findOne({
+            "_id": id
+        });
+        if (!item) return next();
+        res.json(item.door);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //get phrases
 router.get('/phrase/:num', async (req, res, next) => {
