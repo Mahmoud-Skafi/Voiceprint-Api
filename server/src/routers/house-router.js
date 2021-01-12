@@ -162,7 +162,7 @@ router.post('/:id/v/:username/:voiceprint', async (req, res, next) => {
             "_id": id
         })
         if (!item) return next();
-        item.history.push(value);
+        item.voiceprints.push(value);
         const update = await House.updateOne({ "_id": id }, { "voiceprints": item.voiceprints });
         res.json(update);
     } catch (error) {
