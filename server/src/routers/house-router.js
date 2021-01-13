@@ -59,7 +59,7 @@ router.get('/phrase/:num', async (req, res, next) => {
 router.post('/phrase/:str', async (req, res, next) => {
     try {
         let { str } = req.params;
-        str = str.replaceAll("-", " ");
+        str = str.split("-").join(" ");
         let value = { "random": str };
         const inserted = await Phrases.insertMany(value);
         res.json(inserted);
@@ -216,7 +216,7 @@ router.post('/:id/his/:date/:log', async (req, res, next) => {
         // console.log(id, username, voiceprint);
 
         // voiceprint = JSON.parse(voiceprint);
-        log = log.replaceAll("-", " ");
+        log = log.split("-").join(" ");
         const value = { "date": date, "log": log }
         // value = JSON.parse(value);
         console.log(value);
