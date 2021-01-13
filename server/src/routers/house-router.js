@@ -232,4 +232,34 @@ router.post('/:id/his/:date/:log', async (req, res, next) => {
 //GET VOICEPRINT
 
 
+
+
+
+
+
+
+
+router.post('/:id/v/reset', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        console.log(req.body);
+
+        const item = await House.findOne({
+            "_id": id
+        })
+        if (!item) return next();
+        item.voiceprints.push(value);
+        let newvoiceprints = [];
+        for(let i=0;i<item.voiceprints.length;i++)
+        {
+         if(item.voiceprints[i].substring(0, 5)=="admin")
+             newvoiceprints.push(item.voiceprints[i]);
+        }
+        const update = await House.updateOne({ "_id": id }, { "voiceprints": newvoiceprints, "history": [] });
+        res.json(update);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = router;
