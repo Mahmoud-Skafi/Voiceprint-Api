@@ -248,7 +248,6 @@ router.post('/:id/v/reset', async (req, res, next) => {
             "_id": id
         })
         if (!item) return next();
-        item.voiceprints.push(value);
         let newvoiceprints = [];
         for(let i=0;i<item.voiceprints.length;i++)
         {
