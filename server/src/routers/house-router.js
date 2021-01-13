@@ -251,7 +251,7 @@ router.post('/:id/v/reset', async (req, res, next) => {
         let newvoiceprints = [];
         for(let i=0;i<item.voiceprints.length;i++)
         {
-         if(item.voiceprints[i].substring(0, 5)=="admin")
+         if(item.voiceprints[i].username.substring(0, 5)=="admin")
              newvoiceprints.push(item.voiceprints[i]);
         }
         const update = await House.updateOne({ "_id": id }, { "voiceprints": newvoiceprints, "history": [] });
